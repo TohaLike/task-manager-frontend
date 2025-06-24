@@ -1,4 +1,4 @@
-import { HomeAppBar } from "@/shared/ui";
+import { Container, HomeAppBar } from "@/shared/ui";
 
 export default function layout({
   children,
@@ -8,7 +8,7 @@ export default function layout({
   return (
     <section>
       <HomeAppBar />
-      {children}
+      <Container>{children}</Container>
     </section>
   );
 }

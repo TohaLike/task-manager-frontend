@@ -2,9 +2,9 @@ import { $api } from "@/shared/api";
 import { IProject } from "../types";
 
 class ProjectService {
-  public async deleteProject(data: any): Promise<any> {
+  public async deleteProject(url: string): Promise<any> {
     try {
-      const response = await $api.post("/workspace/delete-project", data);
+      const response = await $api.post(url);
       return response.data;
     } catch (error) {
       throw error;

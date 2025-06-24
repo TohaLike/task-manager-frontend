@@ -5,14 +5,11 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Badge from "@mui/material/Badge";
-import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import { Button, Menu, MenuItem } from "@mui/material";
+import { Button, Container, Menu, MenuItem } from "@mui/material";
 import { useLogout } from "@/features/Auth/hooks";
+import Link from "next/link";
 
 export const HomeAppBar: React.FC = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -56,56 +53,54 @@ export const HomeAppBar: React.FC = () => {
             horizontal: "left",
           }}
         >
-          <MenuItem onClick={handleLogout}>Logout</MenuItem>
+          <MenuItem onClick={handleLogout}>Выйти из системы</MenuItem>
         </Menu>
         <AppBar position="static">
-          <Toolbar>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ display: { xs: "none", sm: "block" } }}
-            >
-              Home
-            </Typography>
+          <Container
+            disableGutters={true}
+            maxWidth={false}
+            sx={{ maxWidth: 1300, "&.MuiContainer-root": { p: 0 } }}
+          >
+            <Toolbar>
+              <Typography
+                variant="h6"
+                noWrap
+                component={Link}
+                href={"/home"}
+                sx={{ display: { xs: "none", sm: "block" } }}
+              >
+                Менеджер проектов
+              </Typography>
 
-            <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <IconButton
-                size="large"
-                aria-label="show 17 new notifications"
-                color="inherit"
-              >
-                <Badge badgeContent={17} color="error">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-              <IconButton
-                size="large"
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={open ? "demo-positioned-menu" : undefined}
-                aria-haspopup="true"
-                id="demo-positioned-button"
-                aria-expanded={open ? "true" : undefined}
-                onClick={handleClick}
-                color="inherit"
-              >
-                <AccountCircle shapeRendering="geometricprecision" />
-              </IconButton>
-            </Box>
-            <Box sx={{ display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                id="demo-positioned-button"
-                aria-controls={open ? "demo-positioned-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
-                onClick={handleClick}
-              >
-                <MoreIcon />
-              </IconButton>
-            </Box>
-          </Toolbar>
+              <Box sx={{ flexGrow: 1 }} />
+              <Box sx={{ display: { xs: "none", md: "flex" } }}>
+                <IconButton
+                  size="large"
+                  edge="end"
+                  aria-label="account of current user"
+                  aria-controls={open ? "demo-positioned-menu" : undefined}
+                  aria-haspopup="true"
+                  id="demo-positioned-button"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleClick}
+                  color="inherit"
+                >
+                  <AccountCircle shapeRendering="geometricprecision" />
+                </IconButton>
+              </Box>
+              <Box sx={{ display: { xs: "flex", md: "none" } }}>
+                <IconButton
+                  id="demo-positioned-button"
+                  aria-controls={open ? "demo-positioned-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleClick}
+                >
+                  <MoreIcon />
+                </IconButton>
+              </Box>
+            </Toolbar>
+          </Container>
         </AppBar>
       </Box>
     </div>

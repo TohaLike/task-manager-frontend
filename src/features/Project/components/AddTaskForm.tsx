@@ -27,9 +27,12 @@ export const AddTaskForm: React.FC<TasksProps> = ({ id }) => {
         projectId: id,
         title: data.title,
         description: data.description,
+      }).then(() => {
+        setValue("title", "");
+        setValue("description", "");
       });
-      setValue("title", "");
-      return response.data;
+
+      return response;
     } catch (error) {
       console.log(error);
     }
@@ -37,30 +40,28 @@ export const AddTaskForm: React.FC<TasksProps> = ({ id }) => {
 
   return (
     <div>
-      <PaperWrapper sx={{ borderRadius: 4 }}>
-        <FormProvider {...form}>
-          <form onSubmit={handleSubmit(onSubmit)} noValidate>
-            <Box
-              sx={{
-                display: "grid",
-                // gridTemplateColumns: "1fr 1fr",
-                gap: 1.4,
-              }}
-            >
-              <InputForm size="small" name="title" label="Название задачи" />
-              <InputForm
-                size="small"
-                name="description"
-                label="Описание задачи"
-              />
+      <FormProvider {...form}>
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
+          <Box
+            sx={{
+              display: "grid",
+              // gridTemplateColumns: "1fr 1fr",
+              gap: 1.4,
+            }}
+          >
+            <InputForm size="small" name="title" label="Название задачи" />
+            <InputForm
+              size="small"
+              name="description"
+              label="Описание задачи"
+            />
 
-              <Button variant="contained" type="submit">
-                Создать
-              </Button>
-            </Box>
-          </form>
-        </FormProvider>
-      </PaperWrapper>
+            <Button variant="contained" type="submit">
+              Создать
+            </Button>
+          </Box>
+        </form>
+      </FormProvider>
     </div>
   );
 };

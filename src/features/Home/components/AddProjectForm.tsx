@@ -31,25 +31,23 @@ export const AddProjectForm: React.FC = () => {
 
   return (
     <div>
-      <PaperWrapper sx={{ borderRadius: 4 }}>
-        <FormProvider {...form}>
-          <form onSubmit={handleSubmit(onSubmit)} noValidate>
-            <Box
-              sx={{
-                display: "grid",
-                // gridTemplateColumns: "1fr 1fr",
-                gap: 1.4,
-              }}
-            >
-              <InputForm size="small" name="title" label="Название проекта" />
+      <FormProvider {...form}>
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
+          <Box
+            sx={{
+              display: "grid",
+              // gridTemplateColumns: "1fr 1fr",
+              gap: 1.4,
+            }}
+          >
+            <InputForm size="small" name="title" label="Название проекта" />
 
-              <Button variant="contained" type="submit">
-                Создать
-              </Button>
-            </Box>
-          </form>
-        </FormProvider>
-      </PaperWrapper>
+            <Button variant="contained" type="submit">
+              Создать
+            </Button>
+          </Box>
+        </form>
+      </FormProvider>
     </div>
   );
 };

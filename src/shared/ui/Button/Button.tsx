@@ -7,10 +7,18 @@ export const Button: React.FC<ButtonProps> = ({
   type,
   children,
   onClick,
+  startIcon,
+  sx
 }) => {
   return (
     <>
-      <MuiButton variant={variant} type={type} onClick={onClick}>
+      <MuiButton
+        variant={variant}
+        type={type}
+        onClick={onClick}
+        startIcon={startIcon}
+        sx={{ ...sx }}
+      >
         {children}
       </MuiButton>
     </>

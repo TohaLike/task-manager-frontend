@@ -34,7 +34,7 @@ export const ProjectHeader: React.FC<ProjectProps> = ({ id }) => {
             {getProjectData?.title}
           </Typography>
           <Typography>
-            Создана: {formatToDate(getProjectData?.createdAt as string)}
+            Создан: {formatToDate(getProjectData?.createdAt as string)}
           </Typography>
         </Box>
 

@@ -12,9 +12,10 @@ class TaskService {
     }
   }
 
-  public async deleteTask(url: string): Promise<void> {
+  public async deleteTask(arg: any): Promise<ITask> {
     try {
-      const response = await $api.post(url);
+      const url = `/task/delete/${arg.id}`;
+      const response = await $api.post<ITask>(url);
       return response.data;
     } catch (error) {
       throw error;
@@ -24,6 +25,16 @@ class TaskService {
   public async getAllTasks(url: string): Promise<ITask[]> {
     try {
       const response = await $api.get<ITask[]>(url);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  public async completeTask(arg: any): Promise<ITask> {
+    try {
+      const url = `/task/complete/${arg.id}`;
+      const response = await $api.post<ITask>(url);
       return response.data;
     } catch (error) {
       throw error;

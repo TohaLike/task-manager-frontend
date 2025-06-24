@@ -6,8 +6,6 @@ import { ProjectHeader } from "./ProjectHeader";
 
 export const Project: React.FC<ProjectProps> = ({ id }) => {
 
-  
-
   return (
     <div>
       <ProjectHeader id={id} />

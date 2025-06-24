@@ -3,6 +3,7 @@ export interface ITask {
   title: string;
   description: string;
   projectId: string;
+  isComplited: boolean;
   createdAt: string;
   updatedAt: string;
 }

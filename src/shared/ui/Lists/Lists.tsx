@@ -14,7 +14,11 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { TasksProps } from "@/shared/types";
-import { useGetTasks } from "@/features/Project/hooks";
+import {
+  useCompleteTask,
+  useDeleteTask,
+  useGetTasks,
+} from "@/features/Project/hooks";
 import { ITask } from "@/features/Project/types/tasks.types";
 import {
   pluralizeProjects,
@@ -160,6 +164,12 @@ export const ProjectsList: React.FC = () => {
 export const TaskList: React.FC<TasksProps> = ({ id }) => {
   const { getTasksData } = useGetTasks(id);
 
+  const { completeTaskTrigger } = useCompleteTask();
+
+  const { deleteTaskTrigger } = useDeleteTask();
+
+  console.log(getTasksData?.map((task: ITask) => task.id));
+
   return (
     <div>
       <Box mt={2}>
@@ -202,9 +212,22 @@ export const TaskList: React.FC<TasksProps> = ({ id }) => {
             <Card
               key={`task-item-${task.id}`}
               variant="outlined"
-              sx={{ bgcolor: "#0157FF", color: "#fff", borderRadius: 4 }}
+              sx={{
+                bgcolor: task.isComplited ? "#e0ffe0" : "#fff",
+                color: "#000",
+                borderRadius: 4,
+                opacity: task.isComplited ? 0.6 : 1, // визуально "приглушить"
+                // textDecoration: task.isComplited ? "line-through" : "none",
+              }}
             >
-              <CardContent>
+              <Typography variant="subtitle1" sx={{ p: "8px 16px 0px", fontSize: 14 }}>
+                {task.isComplited ? "Выполнено" : "В процессе"}
+              </Typography>
+              <CardContent
+                sx={{
+                  textDecoration: task.isComplited ? "line-through" : "none",
+                }}
+              >
                 <Typography variant="h5" sx={{ fontSize: 32 }}>
                   {task.title}
                 </Typography>
@@ -215,6 +238,32 @@ export const TaskList: React.FC<TasksProps> = ({ id }) => {
                   {task.description}
                 </Typography>
               </CardContent>
+              <CardActions
+                sx={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}
+              >
+                <Button
+                  onClick={() => completeTaskTrigger({ id: task.id })}
+                  variant="outlined"
+                  sx={{
+                    bgcolor: "#00ff0d75",
+                    color: "#008407",
+                    textTransform: "none",
+                  }}
+                >
+                  Завершить
+                </Button>
+                <Button
+                  onClick={() => deleteTaskTrigger({ id: task.id })}
+                  variant="outlined"
+                  sx={{
+                    bgcolor: "#0157FF20",
+                    color: "#0157FF",
+                    textTransform: "none",
+                  }}
+                >
+                  Удалить
+                </Button>
+              </CardActions>
             </Card>
           ))}
         </Box>

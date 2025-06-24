@@ -14,3 +14,17 @@ export const Container: React.FC<React.PropsWithChildren> = ({ children }) => {
     </div>
   );
 };
+
+
+export const AuthContainer: React.FC<React.PropsWithChildren> = ({ children }) => {
+  return (
+    <div>
+      <MuiContainer
+        maxWidth={false}
+        sx={{ maxWidth: 700, "&.MuiContainer-root": { p: 2 } }}
+      >
+        {children}
+      </MuiContainer>
+    </div>
+  );
+};

@@ -69,7 +69,7 @@ export const HomeAppBar: React.FC = () => {
                 href={"/home"}
                 sx={{ display: { xs: "none", sm: "block" } }}
               >
-                Менеджер проектов
+                TaskManager
               </Typography>
 
               <Box sx={{ flexGrow: 1 }} />

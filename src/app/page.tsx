@@ -1,10 +1,9 @@
-import Image from "next/image";
+import { Main } from "@/features/Main/components";
 
 export default function Home() {
   return (
     <div>
-      <main>vsdvsd</main>
-      <footer></footer>
+      <main><Main /></main>
     </div>
   );
 }

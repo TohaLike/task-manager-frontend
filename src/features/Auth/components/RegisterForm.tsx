@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { InputForm, Button } from "@/shared/ui";
+import { InputForm, Button, PaperWrapper } from "@/shared/ui";
 import { Box, Typography } from "@mui/material";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -32,25 +32,65 @@ export const RegistrationForm: React.FC = () => {
 
   return (
     <div>
-      <FormProvider {...form}>
-        <form onSubmit={handleSubmit(onSubmit)} noValidate>
-          <Box sx={{ mt: 5, display: "grid", gap: 1.4 }}>
-            <InputForm name="email" label="Электронная почта" />
-            <InputForm name="password" label="Пароль" />
+      <Box
+        sx={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -70%)",
+          maxWidth: "600px",
+          width: "100%",
+          m: "auto",
+        }}
+      >
+        <PaperWrapper
+          sx={{
+            borderRadius: 6,
+            p: 4,
+            width: "100%",
+            maxWidth: 660,
+            boxShadow: 3,
+          }}
+        >
+          <FormProvider {...form}>
+            <Typography variant="h4" textAlign="center" fontWeight={600} mb={3}>
+              Регистрация{" "}
+            </Typography>
+            <form onSubmit={handleSubmit(onSubmit)} noValidate>
+              <Box sx={{ mt: 3, display: "grid", gap: 2 }}>
+                <InputForm name="email" label="Электронная почта" />
+                <InputForm name="password" label="Пароль" />
 
-            <Box sx={{ display: "flex", gap: 1 }}>
-              <Typography>Уже есть аккаунт?</Typography>
-              <Typography component={Link} href={"/auth/login"}>
-                Войти
-              </Typography>
-            </Box>
-
-            <Button variant="contained" type="submit">
-              Создать аккаунт
-            </Button>
-          </Box>
-        </form>
-      </FormProvider>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  fullWidth
+                  sx={{ mt: 1 }}
+                >
+                  Создать аккаунт
+                </Button>
+                <Typography variant="body2" textAlign="center" mt={2}>
+                  Уже есть аккаунт?{" "}
+                  <Typography
+                    component={Link}
+                    href="/auth/login"
+                    sx={{
+                      color: "primary.main",
+                      fontWeight: 500,
+                      textDecoration: "none",
+                      "&:hover": {
+                        textDecoration: "underline",
+                      },
+                    }}
+                  >
+                    Войти
+                  </Typography>
+                </Typography>
+              </Box>
+            </form>
+          </FormProvider>
+        </PaperWrapper>
+      </Box>
     </div>
   );
 };

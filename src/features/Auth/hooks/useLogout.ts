@@ -10,7 +10,7 @@ export const useLogout = () => {
     (url, { arg }: { arg: Object }) => authService.logout(),
     {
       onSuccess: () => {
-        return router.push("/");
+        return router.push("/auth/login");
       },
       onError: () => {},
     },

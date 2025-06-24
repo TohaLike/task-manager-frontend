@@ -1,8 +1,9 @@
-import { Container, HomeAppBar } from "@/shared/ui";
+import { AuthContainer, Container, HomeAppBar } from "@/shared/ui";
 import { Metadata } from "next";
 
+
 export const metadata: Metadata = {
-  title: "Домашняя страница",
+  title: "Авторизация",
 };
 
 export default function layout({
@@ -12,8 +13,7 @@ export default function layout({
 }>) {
   return (
     <section>
-      <HomeAppBar />
-      <Container>{children}</Container>
+      <AuthContainer>{children}</AuthContainer>
     </section>
   );
 }

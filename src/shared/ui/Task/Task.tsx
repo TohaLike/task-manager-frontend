@@ -120,12 +120,9 @@ export const TaskList: React.FC<TasksProps> = ({ id }) => {
                   variant="body2"
                   sx={{ mt: 4, fontSize: 16, fontWeight: "400" }}
                 >
-                  Progress
+                  {task.description}
                 </Typography>
               </CardContent>
-              {/* <CardActions>
-              <Button size="small">Learn More</Button>
-            </CardActions> */}
             </Card>
           ))}
         </Box>

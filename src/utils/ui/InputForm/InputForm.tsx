@@ -2,7 +2,7 @@
 import React from "react";
 import { TextField } from "@mui/material";
 import { useFormContext } from "react-hook-form";
-import { InputProps } from "@/features/auth/types";
+import { InputProps } from "@/utils/types";
 
 export const InputForm: React.FC<InputProps> = ({
   label,

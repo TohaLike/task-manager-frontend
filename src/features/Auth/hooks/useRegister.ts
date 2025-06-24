@@ -10,7 +10,7 @@ export const useRegister = () => {
     (url, { arg }: { arg: Object }) => authService.register(arg),
     {
       onSuccess: () => {
-        router.push("/auth/verification");
+        router.push("/home");
       },
       onError: () => {},
     },

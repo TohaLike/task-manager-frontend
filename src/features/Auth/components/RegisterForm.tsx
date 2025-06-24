@@ -19,7 +19,7 @@ export const RegistrationForm: React.FC = () => {
     },
   });
 
-  const { register, handleSubmit } = form;
+  const { handleSubmit } = form;
 
   const onSubmit = async (data: any) => {
     try {

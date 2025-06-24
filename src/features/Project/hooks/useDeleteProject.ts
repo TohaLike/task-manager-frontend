@@ -2,6 +2,7 @@ import useSWRMutation from "swr/mutation";
 import { mutate } from "swr";
 import { projectService, taskService } from "../services";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export const useDeleteProject = (id: string) => {
   const router = useRouter();
@@ -13,8 +14,11 @@ export const useDeleteProject = (id: string) => {
     {
       onSuccess: (arg) => {
         router.push("/home");
+        toast.success("Проект успешно удален!");
       },
-      onError: () => {},
+      onError: (error) => {
+        toast.error(error.response.data.message);
+      },
     }
   );
 

@@ -1,6 +1,7 @@
 import useSWRMutation from "swr/mutation";
 import { useRouter } from "next/navigation";
 import { authService } from "../services";
+import toast from "react-hot-toast";
 
 export const useLogout = () => {
   const router = useRouter();
@@ -10,10 +11,13 @@ export const useLogout = () => {
     (url, { arg }: { arg: Object }) => authService.logout(),
     {
       onSuccess: () => {
-        return router.push("/auth/login");
+        router.push("/auth/login");
+        toast.success("Вы успешно вышли!");
       },
-      onError: () => {},
-    },
+      onError: (error) => {
+        toast.error(error.response.data.message);
+      },
+    }
   );
 
   return {

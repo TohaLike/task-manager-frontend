@@ -1,6 +1,7 @@
 import { useRouter } from "next/navigation";
 import useSWRMutation from "swr/mutation";
 import { authService } from "../services";
+import toast from "react-hot-toast";
 
 export const useRegister = () => {
   const router = useRouter();
@@ -11,9 +12,12 @@ export const useRegister = () => {
     {
       onSuccess: () => {
         router.push("/home");
+        toast.success("Вы успешно зарегистрировались!");
       },
-      onError: () => {},
-    },
+      onError: (error) => {
+        toast.error(error.response.data.message);
+      },
+    }
   );
 
   return {

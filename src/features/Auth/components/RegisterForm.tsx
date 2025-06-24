@@ -59,7 +59,7 @@ export const RegistrationForm: React.FC = () => {
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
               <Box sx={{ mt: 3, display: "grid", gap: 2 }}>
                 <InputForm name="email" label="Электронная почта" />
-                <InputForm name="password" label="Пароль" />
+                <InputForm type="password" name="password" label="Пароль" />
 
                 <Button
                   type="submit"

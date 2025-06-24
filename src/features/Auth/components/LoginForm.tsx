@@ -60,7 +60,7 @@ export const LoginForm: React.FC = () => {
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
               <Box sx={{ display: "grid", gap: 2 }}>
                 <InputForm name="email" label="Электронная почта" />
-                <InputForm name="password" label="Пароль" />
+                <InputForm type="password" name="password" label="Пароль" />
 
                 <Button
                   type="submit"

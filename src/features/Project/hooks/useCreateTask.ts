@@ -1,6 +1,7 @@
 import useSWRMutation from "swr/mutation";
 import { mutate } from "swr";
 import { taskService } from "../services";
+import toast from "react-hot-toast";
 
 export const useCreateTask = () => {
   const { trigger, data, isMutating } = useSWRMutation(
@@ -9,8 +10,11 @@ export const useCreateTask = () => {
     {
       onSuccess: (arg) => {
         mutate([`/task/get-tasks/${arg.projectId}`]);
+        toast.success("Задача успешно создана!");
       },
-      onError: () => {},
+      onError: (error) => {
+        toast.error(error.response.data.message);
+      },
     }
   );
 

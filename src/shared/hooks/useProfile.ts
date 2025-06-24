@@ -1,11 +1,11 @@
 import toast from "react-hot-toast";
-import { projectService } from "../services";
+import { userService } from "../services";
 import useSWR from "swr";
 
-export const useGetProject = () => {
+export const usePofile = () => {
   const { data, isLoading } = useSWR(
-    ["/workspace/get-projects"],
-    () => projectService.getProjects(),
+    ["/user/me"],
+    () => userService.profile(),
     {
       onSuccess: () => {},
       onError: (error) => {
@@ -16,7 +16,7 @@ export const useGetProject = () => {
   );
 
   return {
-    getProjectData: data,
-    getProjectLoading: isLoading,
+    profileData: data,
+    profileLoading: isLoading,
   };
 };

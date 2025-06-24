@@ -7,7 +7,7 @@ export const Container: React.FC<React.PropsWithChildren> = ({ children }) => {
     <div>
       <MuiContainer
         maxWidth={false}
-        sx={{ maxWidth: 1400, "&.MuiContainer-root": { p: 2 } }}
+        sx={{ maxWidth: 1300, "&.MuiContainer-root": { p: 2 } }}
       >
         {children}
       </MuiContainer>

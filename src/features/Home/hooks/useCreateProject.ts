@@ -1,6 +1,7 @@
 import useSWRMutation from "swr/mutation";
 import { useRouter } from "next/navigation";
 import { projectService } from "../services";
+import { mutate } from "swr";
 
 export const useCreateProject = () => {
   const router = useRouter();
@@ -10,7 +11,7 @@ export const useCreateProject = () => {
     (url, { arg }: { arg: Object }) => projectService.createProject(arg),
     {
       onSuccess: () => {
-        return router.push("/");
+        mutate(["/workspace/get-projects"]);
       },
       onError: () => {},
     }

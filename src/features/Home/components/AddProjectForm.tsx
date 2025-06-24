@@ -14,15 +14,15 @@ export const AddProjectForm: React.FC = () => {
     resolver: zodResolver(AddProjectSchema),
     defaultValues: {
       title: "",
-      description: "",
     },
   });
 
-  const { handleSubmit } = form;
+  const { handleSubmit, setValue } = form;
 
   const onSubmit = async (data: any) => {
     try {
       const response = await createProjectTrigger(data);
+      setValue("title", "");
       return response.data;
     } catch (error) {
       console.log(error);
@@ -31,7 +31,7 @@ export const AddProjectForm: React.FC = () => {
 
   return (
     <div>
-      <PaperWrapper>
+      <PaperWrapper sx={{ borderRadius: 4 }}>
         <FormProvider {...form}>
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <Box
@@ -41,12 +41,7 @@ export const AddProjectForm: React.FC = () => {
                 gap: 1.4,
               }}
             >
-              <InputForm size="small" name="email" label="Название проекта" />
-              <InputForm
-                size="small"
-                name="description"
-                label="Описание проекта"
-              />
+              <InputForm size="small" name="title" label="Название проекта" />
 
               <Button variant="contained" type="submit">
                 Создать

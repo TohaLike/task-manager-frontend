@@ -56,8 +56,6 @@ export const HomeAppBar: React.FC = () => {
             horizontal: "left",
           }}
         >
-          {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
-          {/* <MenuItem onClick={handleClose}>My account</MenuItem> */}
           <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>
         <AppBar position="static">

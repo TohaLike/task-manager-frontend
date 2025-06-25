@@ -24,7 +24,7 @@ export const Main: React.FC = () => {
             <Button href="/auth/login" color="primary">
               Войти
             </Button>
-            <Button href="/auth/register" variant="outlined" sx={{ ml: 2 }}>
+            <Button href="/auth/registration" variant="outlined" sx={{ ml: 2 }}>
               Регистрация
             </Button>
           </Toolbar>

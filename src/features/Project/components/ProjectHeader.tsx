@@ -30,9 +30,28 @@ export const ProjectHeader: React.FC<ProjectProps> = ({ id }) => {
         }}
       >
         <Box>
-          <Typography variant="h2" sx={{ fontSize: 32, fontWeight: 600 }}>
-            {getProjectData?.title}
-          </Typography>
+          <Box
+            sx={{
+              overflow: "hidden",
+              maxWidth: "800px",
+              width: "100%",
+              display: "grid",
+              gridTemplateColumns: "1fr",
+            }}
+          >
+            <Typography
+              variant="h2"
+              sx={{
+                fontSize: 32,
+                fontWeight: 600,
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {getProjectData?.title}
+            </Typography>
+          </Box>
           <Typography>
             Создан: {formatToDate(getProjectData?.createdAt as string)}
           </Typography>

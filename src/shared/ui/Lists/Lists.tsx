@@ -132,6 +132,12 @@ export const ProjectsList: React.FC = () => {
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
             gap: 1.4,
+            "@media (max-width: 1100px)": {
+              gridTemplateColumns: "1fr 1fr",
+            },
+            "@media (max-width: 600px)": {
+              gridTemplateColumns: "1fr",
+            },
           }}
         >
           {getProjectData?.map((project: IProject) => (
@@ -167,8 +173,6 @@ export const TaskList: React.FC<TasksProps> = ({ id }) => {
   const { completeTaskTrigger } = useCompleteTask();
 
   const { deleteTaskTrigger } = useDeleteTask();
-
-  console.log(getTasksData?.map((task: ITask) => task.id));
 
   return (
     <div>
@@ -206,6 +210,12 @@ export const TaskList: React.FC<TasksProps> = ({ id }) => {
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
             gap: 1.4,
+            "@media (max-width: 1100px)": {
+              gridTemplateColumns: "1fr 1fr",
+            },
+            "@media (max-width: 600px)": {
+              gridTemplateColumns: "1fr",
+            },
           }}
         >
           {getTasksData?.map((task: ITask) => (
@@ -220,7 +230,10 @@ export const TaskList: React.FC<TasksProps> = ({ id }) => {
                 // textDecoration: task.isComplited ? "line-through" : "none",
               }}
             >
-              <Typography variant="subtitle1" sx={{ p: "8px 16px 0px", fontSize: 14 }}>
+              <Typography
+                variant="subtitle1"
+                sx={{ p: "8px 16px 0px", fontSize: 14 }}
+              >
                 {task.isComplited ? "Выполнено" : "В процессе"}
               </Typography>
               <CardContent
@@ -239,7 +252,10 @@ export const TaskList: React.FC<TasksProps> = ({ id }) => {
                 </Typography>
               </CardContent>
               <CardActions
-                sx={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(2, 1fr)",
+                }}
               >
                 <Button
                   onClick={() => completeTaskTrigger({ id: task.id })}
